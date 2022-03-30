@@ -1,39 +1,22 @@
 #include <stdio.h>
 #include "main.h"
 
-char *_memset(char *s, char b, unsigned int n)
+char *_strstr(char *haystack, char *needle)
 {
-    unsigned int i = 0;
-    while (i < n)
-    {
-        /* code */
-        s[i] = b;
-        i++;
-    }
-    return(s);
+	int i, j;
 
+	for (i = 0; haystack[i] != '\0'; i++)
+	{
+		for (j = 0; needle[j] != '\0'; j++)
+		{
+			if (haystack[i + j] != needle[j])
+				break;
+		}
+		if (needle[j] == '\0')
+			return (&haystack[i]);
+	}
+	return (0);
 }
-void simple_print_buffer(char *buffer, unsigned int size)
-{
-        unsigned int i;
-
-        i = 0;
-        while (i < size)
-        {
-                if (i % 10)
-                {
-                        printf(" ");
-                }
-                if (!(i % 10) && i)
-                {
-                        printf("\n");
-                }
-                printf("0x%02x", buffer[i]);
-                i++;
-        }
-        printf("\n");
-}
-
 /**
  * main - check the code
  *
@@ -41,11 +24,11 @@ void simple_print_buffer(char *buffer, unsigned int size)
  */
 int main(void)
 {
-    char buffer[98] = {0x00};
+    char *s = "hellwo, world";
+    char *f = "world";
+    char *t;
 
-    simple_print_buffer(buffer, 98);
-    _memset(buffer, 0x01, 95);
-    printf("-------------------------------------------------\n");
-    simple_print_buffer(buffer, 98);    
+    t = _strstr(s, f);
+    printf("%s\n", t);
     return (0);
 }
