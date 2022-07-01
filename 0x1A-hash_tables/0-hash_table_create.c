@@ -1,5 +1,5 @@
 #include "hash_tables.h"
-/**
+i**
  * hash_table_create - create a hash table
  * @size: Table size
  * Return: succes
@@ -16,3 +16,4 @@ if (table->array == NULL)
 return (NULL);
 return (table);
 }
+
